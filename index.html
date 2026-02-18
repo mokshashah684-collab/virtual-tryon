@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Try On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Try Before You Buy 💫</h1>
+
+<input type="file" id="upload" accept="image/*">
+
+<div class="canvas-container">
+    <img id="userImage">
+    <img id="clothingOverlay">
+</div>
+
+<div class="catalogue">
+    <img src="images/dress1.png" onclick="changeClothes(this)">
+    <img src="images/dress2.png" onclick="changeClothes(this)">
+    <img src="images/dress3.png" onclick="changeClothes(this)">
+</div>
+
+<button onclick="downloadImage()">Download</button>
+
+<script src="script.js"></script>
+</body>
+</html>
