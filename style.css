@@ -39,8 +39,8 @@ body {
     position: relative;
     width: 100%;
     min-height: 400px;
+    overflow: hidden;
 }
-
 
 #userImage {
     width: 100%;
@@ -74,5 +74,27 @@ body {
 .catalogue img:hover {
     transform: scale(1.05);
 }
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upload-box,
+    .preview-box {
+        width: 90%;
+    }
+
+    .catalogue {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .catalogue img {
+        width: 90px;
+    }
+}
+
 
 
