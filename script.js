@@ -2,7 +2,7 @@ const upload = document.getElementById("upload");
 const userImage = document.getElementById("userImage");
 const clothingOverlay = document.getElementById("clothingOverlay");
 
-// Upload user image
+// Upload image
 upload.addEventListener("change", function(event) {
     const reader = new FileReader();
     reader.onload = function(){
@@ -16,7 +16,7 @@ function changeClothes(element) {
     clothingOverlay.src = element.src;
 }
 
-// DRAG FUNCTIONALITY
+// ================= DRAG (DESKTOP) =================
 let isDragging = false;
 let startX, startY;
 
@@ -37,7 +37,21 @@ document.addEventListener("mouseup", function() {
     isDragging = false;
 });
 
-// SCROLL TO RESIZE
+// ================= TOUCH DRAG (PHONE) =================
+clothingOverlay.addEventListener("touchstart", function(e) {
+    const touch = e.touches[0];
+    startX = touch.clientX - clothingOverlay.offsetLeft;
+    startY = touch.clientY - clothingOverlay.offsetTop;
+});
+
+clothingOverlay.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    clothingOverlay.style.left = (touch.clientX - startX) + "px";
+    clothingOverlay.style.top = (touch.clientY - startY) + "px";
+});
+
+// ================= RESIZE (DESKTOP SCROLL) =================
 clothingOverlay.addEventListener("wheel", function(e) {
     e.preventDefault();
     let currentWidth = clothingOverlay.offsetWidth;
@@ -46,4 +60,9 @@ clothingOverlay.addEventListener("wheel", function(e) {
     } else {
         clothingOverlay.style.width = currentWidth - 10 + "px";
     }
+});
+
+// ================= DOUBLE TAP TO RESIZE (PHONE) =================
+clothingOverlay.addEventListener("dblclick", function() {
+    clothingOverlay.style.width = clothingOverlay.offsetWidth + 20 + "px";
 });
