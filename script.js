@@ -4,7 +4,7 @@ const clothingOverlay = document.getElementById("clothingOverlay");
 
 upload.addEventListener("change", function(event) {
     const reader = new FileReader();
-    reader.onload = function() {
+    reader.onload = function(){
         userImage.src = reader.result;
     }
     reader.readAsDataURL(event.target.files[0]);
@@ -12,11 +12,11 @@ upload.addEventListener("change", function(event) {
 
 function changeClothes(element) {
     clothingOverlay.src = element.src;
+    clothingOverlay.style.top = "50px";
+    clothingOverlay.style.left = "50px";
+    clothingOverlay.style.width = "200px";
 }
 
-function downloadImage() {
-    alert("Right click and save image for now!");
-}
 let isDragging = false;
 let offsetX, offsetY;
 
@@ -28,8 +28,8 @@ clothingOverlay.addEventListener("mousedown", function(e) {
 
 document.addEventListener("mousemove", function(e) {
     if (isDragging) {
-        clothingOverlay.style.left = (e.pageX - offsetX) + "px";
-        clothingOverlay.style.top = (e.pageY - offsetY) + "px";
+        clothingOverlay.style.left = (e.pageX - clothingOverlay.parentElement.offsetLeft - offsetX) + "px";
+        clothingOverlay.style.top = (e.pageY - clothingOverlay.parentElement.offsetTop - offsetY) + "px";
     }
 });
 
