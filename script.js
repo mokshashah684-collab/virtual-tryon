@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const userImage = document.getElementById("userImage");
     const clothingOverlay = document.getElementById("clothingOverlay");
 
-    // Upload image
+    // Initially disable overlay interaction
+    clothingOverlay.style.pointerEvents = "none";
+
+    // ================= UPLOAD IMAGE =================
     upload.addEventListener("change", function(event) {
         const reader = new FileReader();
         reader.onload = function(){
@@ -13,10 +16,11 @@ document.addEventListener("DOMContentLoaded", function() {
         reader.readAsDataURL(event.target.files[0]);
     });
 
-    // Change clothing
+    // ================= CHANGE CLOTHES =================
     window.changeClothes = function(element) {
         clothingOverlay.src = element.src;
-    }
+        clothingOverlay.style.pointerEvents = "auto"; // Enable interaction only after selecting dress
+    };
 
     // ================= DRAG (DESKTOP) =================
     let isDragging = false;
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
         isDragging = false;
     });
 
-    // ================= TOUCH DRAG =================
+    // ================= TOUCH DRAG (PHONE) =================
     clothingOverlay.addEventListener("touchstart", function(e) {
         const touch = e.touches[0];
         startX = touch.clientX - clothingOverlay.offsetLeft;
@@ -53,11 +57,28 @@ document.addEventListener("DOMContentLoaded", function() {
         clothingOverlay.style.top = (touch.clientY - startY) + "px";
     });
 
-    // ================= RESIZE (DESKTOP SCROLL) =================
+    // ================= DESKTOP SCROLL RESIZE =================
     clothingOverlay.addEventListener("wheel", function(e) {
         e.preventDefault();
         let currentWidth = clothingOverlay.offsetWidth;
+
         if (e.deltaY < 0) {
-            clothingOverlay.style.width = currentWidth + 10 + "px";
+            clothingOverlay.style.width = (currentWidth + 10) + "px";
         } else {
-            clothingOverlay.style.width = currentWidth - 10 + "px";
+            if (currentWidth > 50) {
+                clothingOverlay.style.width = (currentWidth - 10) + "px";
+            }
+        }
+    });
+
+    // ================= BUTTON RESIZE (WORKS ON PHONE) =================
+    window.resizeClothing = function(direction) {
+        let currentWidth = clothingOverlay.offsetWidth;
+        let newWidth = currentWidth + direction * 15;
+
+        if (newWidth > 50) {
+            clothingOverlay.style.width = newWidth + "px";
+        }
+    };
+
+});
