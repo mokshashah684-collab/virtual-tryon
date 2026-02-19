@@ -4,6 +4,8 @@
     <title>AI Virtual Try-On</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 
@@ -20,15 +22,19 @@
     </div>
 
     <div class="preview-box">
-        <h3>Preview</h3>
-        <div class="canvas-container">
-    <img id="userImage">
-    <img id="clothingOverlay" draggable="false">
+
+    <div class="canvas-container">
+        <img id="userImage">
+        <img id="clothingOverlay">
+    </div>
+
+    <div class="resize-controls">
+        <button onclick="resizeClothing(1)">+</button>
+        <button onclick="resizeClothing(-1)">−</button>
+    </div>
+
 </div>
-<div class="resize-controls">
-    <button onclick="resizeClothing(1)">+</button>
-    <button onclick="resizeClothing(-1)">−</button>
-</div>
+
         
     </div>
 
@@ -42,6 +48,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
