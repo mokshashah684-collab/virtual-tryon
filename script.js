@@ -66,3 +66,8 @@ clothingOverlay.addEventListener("wheel", function(e) {
 clothingOverlay.addEventListener("dblclick", function() {
     clothingOverlay.style.width = clothingOverlay.offsetWidth + 20 + "px";
 });
+function resizeClothing(direction) {
+    let currentWidth = clothingOverlay.offsetWidth;
+    clothingOverlay.style.width = (currentWidth + direction * 15) + "px";
+}
+
