@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Virtual Try On</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>AI Virtual Try-On</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>Try Before You Buy 💫</h1>
+<div class="header">
+    <h1>AI Virtual Try-On</h1>
+    <p>Instantly try outfits with smart technology</p>
+</div>
 
-<input type="file" id="upload" accept="image/*">
+<div class="main-container">
 
-<div class="canvas-container">
-    <img id="userImage">
-    <img id="clothingOverlay">
+    <div class="upload-box">
+        <h3>Upload Image</h3>
+        <input type="file" id="upload" accept="image/*">
+    </div>
+
+    <div class="preview-box">
+        <h3>Preview</h3>
+        <div class="canvas-container">
+            <img id="userImage">
+            <img id="clothingOverlay">
+        </div>
+    </div>
+
 </div>
 
 <div class="catalogue">
@@ -21,8 +34,6 @@
     <img src="images/dress2.png" onclick="changeClothes(this)">
     <img src="images/dress3.png" onclick="changeClothes(this)">
 </div>
-
-<button onclick="downloadImage()">Download</button>
 
 <script src="script.js"></script>
 </body>
