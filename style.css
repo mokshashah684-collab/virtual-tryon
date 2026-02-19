@@ -49,8 +49,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 200px;
     cursor: move;
+    resize: both;
+    overflow: auto;
+    border: 2px dashed #888;
 }
 
 .catalogue {
@@ -70,3 +73,4 @@ body {
 .catalogue img:hover {
     transform: scale(1.05);
 }
+
